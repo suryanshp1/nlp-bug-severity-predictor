@@ -37,7 +37,7 @@ curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json"
 To run the tests:
 
 ```
-pytest
+python tests/test_main.py
 ```
 
 ## License
