@@ -8,14 +8,15 @@ from nltk.tokenize import word_tokenize
 app = FastAPI()
 
 # Download necessary NLTK data
-nltk.download('punkt', quiet=True)
-nltk.download('stopwords', quiet=True)
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
 
 # Load the model and vectorizer
 try:
-    with open('models/bug_severity_model.pkl', 'rb') as f:
+    with open('artifact/bug_severity_model.pkl', 'rb') as f:
         model = pickle.load(f)
-    with open('models/tfidf_vectorizer.pkl', 'rb') as f:
+    with open('artifact/tfidf_vectorizer.pkl', 'rb') as f:
         vectorizer = pickle.load(f)
 except FileNotFoundError:
     raise HTTPException(status_code=500, detail="Model or vectorizer file not found. Please ensure the model is trained and saved.")
